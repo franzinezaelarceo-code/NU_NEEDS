@@ -6,19 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignupActivity"
-    android:background="@android:drawable/nu_needs_bg">
+    >
 
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="113dp"
-        android:layout_height="93dp"
+        android:layout_width="229dp"
+        android:layout_height="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045"
-        app:srcCompat="@drawable/nu_shield_svg" />
+        app:layout_constraintVertical_bias="0.028"
+        app:srcCompat="@drawable/nu_needs_logo" />
 
     <Button
         android:id="@+id/BTN_Signup"
