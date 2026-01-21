@@ -46,29 +46,32 @@
         app:layout_constraintVertical_bias="0.663" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TV_Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to NU Needs!"
-        android:textSize="20dp"
+        android:fontFamily="@font/Barlow"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.458"
+        />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TV_Motto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/Barlow"
         android:text="NU need it? We got it!"
-        android:textSize="15dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.504" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
