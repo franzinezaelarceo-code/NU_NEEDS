@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141"
-        app:srcCompat="@drawable/nu_needs_logo" />
+        app:srcCompat="@drawable/nu_shield_svg" />
 
     <EditText
         android:id="@+id/ET_Username"
