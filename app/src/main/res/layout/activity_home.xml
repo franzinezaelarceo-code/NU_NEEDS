@@ -8,11 +8,13 @@
     tools:context=".HomeActivity"
     android:background="@drawable/nu_needs_homebg">
 
+    <!-- ===== YOUR EXISTING HOME SCREEN ===== -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Burger Button -->
         <ImageView
             android:id="@+id/burger_button"
             android:layout_width="38dp"
@@ -31,30 +33,29 @@
             android:layout_width="100dp"
             android:layout_height="90dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/nu_needs_logo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/nu_needs_logo" />
 
         <Button
             android:id="@+id/checkout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/button"
             android:text="Check Out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.946"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.898"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.961" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <!-- ===== SIDE PANEL (Hidden by default) ===== -->
     <LinearLayout
         android:id="@+id/side_panel"
         android:layout_width="250dp"
@@ -65,14 +66,18 @@
         android:visibility="gone"
         android:translationX="-250dp">
 
+        <!-- Filing & Organization -->
         <TextView
+            android:id="@+id/category_filing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Filing &amp; Organization"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -80,14 +85,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Fasteners & Binding -->
         <TextView
+            android:id="@+id/category_fasteners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fasteners &amp; Binding"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -95,14 +104,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Cutting & Measuring -->
         <TextView
+            android:id="@+id/category_cutting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cutting &amp; Measuring"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -110,14 +123,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Writing & Marking -->
         <TextView
+            android:id="@+id/category_writing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Writing &amp; Marking"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -125,14 +142,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Ink, Stamp & Adhesives -->
         <TextView
+            android:id="@+id/category_ink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ink, Stamp &amp; Adhesives"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -140,14 +161,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Paper Products -->
         <TextView
+            android:id="@+id/category_paper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Paper Products"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
         <View
             android:layout_width="match_parent"
@@ -155,14 +180,18 @@
             android:background="#E0E0E0"
             android:layout_marginVertical="5dp"/>
 
+        <!-- Tapes -->
         <TextView
+            android:id="@+id/category_tapes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tapes"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>
 
