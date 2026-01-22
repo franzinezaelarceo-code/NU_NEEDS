@@ -18,47 +18,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304"
+        app:layout_constraintVertical_bias="0.332"
         app:srcCompat="@drawable/nu_needs_logo" />
-
-    <Button
-        android:id="@+id/BTN_Login"
-        android:layout_width="113dp"
-        android:layout_height="45dp"
-        android:backgroundTint="@color/button"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
-
-    <Button
-        android:id="@+id/BTN_Signup"
-        android:layout_width="113dp"
-        android:layout_height="45dp"
-        android:backgroundTint="@color/button"
-        android:text="Signup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
 
     <TextView
         android:id="@+id/TV_Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to NU Needs!"
         android:fontFamily="@font/barlow"
+        android:text="Welcome to NU Needs!"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.458"
-        />
+        app:layout_constraintVertical_bias="0.478" />
+
+    <Button
+        android:id="@+id/BTN_Signup"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/button"
+        android:text="Signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.663" />
 
     <TextView
         android:id="@+id/TV_Motto"
@@ -72,6 +60,19 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintVertical_bias="0.523" />
+
+    <Button
+        android:id="@+id/BTN_Login"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/button"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,19 +19,19 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val message = findViewById<TextView>(R.id.TV_Message)
+        //val message = findViewById<TextView>(R.id.TV_Message)
         val messageView = intent.extras?.getString("message")
         val passwordView = intent.extras?.getString("password")
-        val logout = findViewById<Button>(R.id.BTN_Logout)
+        val checkout = findViewById<Button>(R.id.BTN_CheckOut)
 
-        if (messageView.isNullOrBlank()){
-            message.text = "No message received"
-        } else {
-            message.text = "Welcome, $messageView \n Your password is $passwordView"
-        }
+        //if (messageView.isNullOrBlank()){
+      //      message.text = "No message received"
+       // } else {
+       //     message.text = "Welcome, $messageView \n Your password is $passwordView"
+       // }
 
-        logout.setOnClickListener {
-            val goBack = Intent(this, LoginActivity::class.java)
+        checkout.setOnClickListener {
+            val goBack = Intent(this, ViewCartActivity::class.java)
             startActivity(goBack)
         }
     }
