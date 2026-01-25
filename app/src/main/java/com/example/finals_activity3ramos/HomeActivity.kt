@@ -1,7 +1,9 @@
 package com.example.finals_activity3ramos
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
@@ -15,6 +17,10 @@ import androidx.core.view.WindowInsetsCompat
 class HomeActivity : AppCompatActivity() {
 
     private var isPanelOpen = false
+    private var panelWidth = 0
+    private var initialX = 0f
+    private var panelInitialX = 0f
+    private var isDragging = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,56 +37,154 @@ class HomeActivity : AppCompatActivity() {
         val sidePanel = findViewById<View>(R.id.side_panel)
         val checkoutButton = findViewById<Button>(R.id.checkout_button)
 
+        // Get panel width once it's measured
+        sidePanel.post {
+            panelWidth = sidePanel.width
+        }
+
         burgerButton.setOnClickListener {
-            toggleSidePanel(sidePanel)
+            toggleSidePanel()
         }
 
-        findViewById<View>(R.id.main).setOnClickListener {
-            if (isPanelOpen) {
-                toggleSidePanel(sidePanel)
-            }
+        // ONLY ONE touch listener - remove the duplicate!
+        @SuppressLint("ClickableViewAccessibility")
+        sidePanel.setOnTouchListener { view, event ->
+            handlePanelDrag(view, event)
         }
 
-        sidePanel.setOnClickListener {
-        }
-
-
+        // Handle checkout button
         checkoutButton.setOnClickListener {
             val intent = Intent(this, ViewCartActivity::class.java)
             startActivity(intent)
         }
 
-        // Set up category click listeners (DOES NOTHING YET)
-        setupCategoryClicks(sidePanel)
+        // Set up category click listeners
+        setupCategoryClicks()
     }
 
-    private fun toggleSidePanel(sidePanel: View) {
-        if (isPanelOpen) {
-            // CLOSE the panel
-            sidePanel.animate()
-                .translationX(-250f)
-                .setDuration(300)
-                .setInterpolator(AccelerateDecelerateInterpolator())
-                .withEndAction {
-                    sidePanel.visibility = View.GONE
+    private fun handlePanelDrag(view: View, event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                // Only allow dragging when panel is open
+                if (!isPanelOpen) return false
+
+                // Record initial positions
+                initialX = event.rawX
+                panelInitialX = view.translationX
+                isDragging = true
+                return true
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+                if (!isDragging) return false
+
+                // Calculate how much finger has moved
+                val deltaX = event.rawX - initialX
+
+                // Calculate new panel position
+                var newTranslation = panelInitialX + deltaX
+
+                // Constrain movement:
+                // - Can't pull right beyond open position (0)
+                // - Can't pull left beyond closed position (-panelWidth)
+                if (newTranslation > 0f) {
+                    newTranslation = 0f
+                } else if (newTranslation < -panelWidth.toFloat()) {
+                    newTranslation = -panelWidth.toFloat()
                 }
-                .start()
-        } else {
-            // OPEN the panel
-            sidePanel.visibility = View.VISIBLE
-            sidePanel.translationX = -250f
-            sidePanel.animate()
-                .translationX(0f)
-                .setDuration(300)
-                .setInterpolator(AccelerateDecelerateInterpolator())
-                .start()
-        }
 
-        isPanelOpen = !isPanelOpen
+                // Move panel in REAL-TIME with finger
+                view.translationX = newTranslation
+
+                // Optional: Add visual feedback (fade effect)
+                val progress = 1 - (-newTranslation / panelWidth.toFloat())
+                view.alpha = 0.8f + (0.2f * progress)
+
+                return true
+            }
+
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                if (!isDragging) return false
+
+                isDragging = false
+
+                val deltaX = event.rawX - initialX
+                val currentTranslation = view.translationX
+                val swipeThreshold = panelWidth * 0.3f // 30% of panel width
+
+                // Decide whether to close or open based on:
+                // 1. Current position
+                // 2. Swipe distance
+                val shouldClose = when {
+                    // Swiped left significantly
+                    deltaX < -swipeThreshold -> true
+                    // Panel is more than halfway closed
+                    currentTranslation < -panelWidth / 2 -> true
+                    // Default: return to open
+                    else -> false
+                }
+
+                if (shouldClose) {
+                    closePanelWithAnimation(view)
+                } else {
+                    openPanelWithAnimation(view)
+                }
+
+                return true
+            }
+        }
+        return false
     }
 
-    private fun setupCategoryClicks(sidePanel: View) {
-        // Category click listeners - DO NOTHING YET
+    private fun toggleSidePanel() {
+        val sidePanel = findViewById<View>(R.id.side_panel)
+        if (isPanelOpen) {
+            closePanelWithAnimation(sidePanel)
+        } else {
+            openPanelWithAnimation(sidePanel)
+        }
+    }
+
+    private fun openPanelWithAnimation(panel: View? = null) {
+        val sidePanel = panel ?: findViewById<View>(R.id.side_panel)
+        sidePanel.visibility = View.VISIBLE
+
+        sidePanel.animate()
+            .translationX(0f)
+            .alpha(1f)
+            .setDuration(300)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .withStartAction {
+                // Reset alpha when starting animation
+                sidePanel.alpha = 0.8f
+            }
+            .start()
+
+        isPanelOpen = true
+    }
+
+    private fun closePanelWithAnimation(panel: View? = null) {
+        val sidePanel = panel ?: findViewById<View>(R.id.side_panel)
+
+        sidePanel.animate()
+            .translationX(-panelWidth.toFloat())
+            .alpha(0.8f)
+            .setDuration(300)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .withEndAction {
+                sidePanel.visibility = View.GONE
+                sidePanel.alpha = 1f // Reset alpha
+            }
+            .start()
+
+        isPanelOpen = false
+    }
+
+    private fun setupCategoryClicks() {
+        val sidePanel = findViewById<View>(R.id.side_panel)
+
+        // Check if these IDs exist in your activity_home.xml
+        // If not, you need to add them to the side panel TextViews
         val categoryIds = listOf(
             R.id.category_filing,
             R.id.category_fasteners,
@@ -92,30 +196,47 @@ class HomeActivity : AppCompatActivity() {
         )
 
         categoryIds.forEach { id ->
-            findViewById<View>(id).setOnClickListener {
-                // Just show a toast (you'll replace this later)
+            val categoryView = findViewById<View?>(id)
+            categoryView?.setOnClickListener {
                 when (id) {
-                    R.id.category_filing -> Toast.makeText(this, "Filing clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_fasteners -> Toast.makeText(this, "Fasteners clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_cutting -> Toast.makeText(this, "Cutting clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_writing -> Toast.makeText(this, "Writing clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_ink -> Toast.makeText(this, "Ink clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_paper -> Toast.makeText(this, "Paper clicked", Toast.LENGTH_SHORT).show()
-                    R.id.category_tapes -> Toast.makeText(this, "Tapes clicked", Toast.LENGTH_SHORT).show()
+                    R.id.activity_home -> {
+                        Toast.makeText(this, "Filing clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show filing content
+                    }
+                    R.id.category_fasteners -> {
+                        Toast.makeText(this, "Fasteners clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show fasteners content
+                    }
+                    R.id.category_cutting -> {
+                        Toast.makeText(this, "Cutting clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show cutting content
+                    }
+                    R.id.category_writing -> {
+                        Toast.makeText(this, "Writing clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show writing content
+                    }
+                    R.id.category_ink -> {
+                        Toast.makeText(this, "Ink clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show ink content
+                    }
+                    R.id.category_paper -> {
+                        Toast.makeText(this, "Paper clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show paper content
+                    }
+                    R.id.category_tapes -> {
+                        Toast.makeText(this, "Tapes clicked", Toast.LENGTH_SHORT).show()
+                        // TODO: Show tapes content
+                    }
                 }
 
-                // Close the panel
-                toggleSidePanel(sidePanel)
-
-                // TODO: Later you'll add code here to show category content
+                closePanelWithAnimation(sidePanel)
             }
         }
     }
 
     override fun onBackPressed() {
-        val sidePanel = findViewById<View>(R.id.side_panel)
         if (isPanelOpen) {
-            toggleSidePanel(sidePanel)
+            closePanelWithAnimation()
         } else {
             super.onBackPressed()
         }
