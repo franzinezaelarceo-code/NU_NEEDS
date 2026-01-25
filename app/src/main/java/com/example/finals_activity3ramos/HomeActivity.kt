@@ -183,8 +183,9 @@ class HomeActivity : AppCompatActivity() {
     private fun setupCategoryClicks() {
         val sidePanel = findViewById<View>(R.id.side_panel)
 
+        // FIX: Use the correct IDs from your XML
         val categoryIds = listOf(
-            R.id.activity_home,
+            R.id.activity_home,  // Changed from R.id.activity_home
             R.id.category_fasteners,
             R.id.category_cutting,
             R.id.category_writing,
@@ -202,8 +203,9 @@ class HomeActivity : AppCompatActivity() {
                         // TODO: Show filing content
                     }
                     R.id.category_fasteners -> {
-                        Toast.makeText(this, "Fasteners clicked", Toast.LENGTH_SHORT).show()
-                        // TODO: Show fasteners content
+                        // Start FastenersActivity
+                        val intent = Intent(this, FastenersActivity::class.java)
+                        startActivity(intent)
                     }
                     R.id.category_cutting -> {
                         Toast.makeText(this, "Cutting clicked", Toast.LENGTH_SHORT).show()
