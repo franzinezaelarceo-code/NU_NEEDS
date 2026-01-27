@@ -7,6 +7,9 @@
     tools:context=".HomeActivity">
 
     <!-- ===== BLANK HOME SCREEN ===== -->
+
+    <!-- ===== SIDE PANEL (Just Log Out button) ===== -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -15,7 +18,7 @@
 
         <!-- Burger Button -->
         <ImageView
-            android:id="@+id/burger_button"
+            android:id="@+id/BTN_Burger"
             android:layout_width="38dp"
             android:layout_height="29dp"
             android:clickable="true"
@@ -40,9 +43,126 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/nu_needs_logo" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="236dp"
+            android:layout_height="45dp"
+            android:fontFamily="@font/Barlow"
+            android:text="Welcome to NU Needs!"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.163" />
+
+        <TextView
+            android:id="@+id/TV_Today"
+            android:layout_width="164dp"
+            android:layout_height="25dp"
+            android:fontFamily="@font/Barlow"
+            android:text="What to we need today?"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.249" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Filings"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:text="Filings and Organization"
+            android:textSize="20dp"
+            android:fontFamily="@font/Barlow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.322"
+            android:backgroundTint="@color/button"
+            app:cornerRadius="0dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Fasteners"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/button"
+            android:fontFamily="@font/Barlow"
+            android:text="Fasteners and Binding"
+            android:textSize="20dp"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.408" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Cutting"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/button"
+            android:fontFamily="@font/Barlow"
+            android:text="Cutting and Measuring Tool"
+            android:textSize="20dp"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.494" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Writing"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/button"
+            android:fontFamily="@font/Barlow"
+            android:text="Writing and Marking"
+            android:textSize="20dp"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.58" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Paper"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/button"
+            android:fontFamily="@font/Barlow"
+            android:text="Paper Products"
+            android:textSize="20dp"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.665" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/BTN_Tapes"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/button"
+            android:fontFamily="@font/Barlow"
+            android:text="Tapes and Packaging"
+            android:textSize="20dp"
+            app:cornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.751" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- ===== SIDE PANEL (Just Log Out button) ===== -->
     <LinearLayout
         android:id="@+id/side_panel"
         android:layout_width="250dp"
@@ -61,7 +181,7 @@
 
         <!-- LOG OUT BUTTON -->
         <Button
-            android:id="@+id/btn_logout"
+            android:id="@+id/BTN_Logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOG OUT"

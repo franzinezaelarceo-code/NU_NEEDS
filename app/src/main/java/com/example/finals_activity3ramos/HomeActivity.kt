@@ -30,11 +30,22 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
-        val burgerButton = findViewById<ImageView>(R.id.burger_button)
+        val burgerButton = findViewById<ImageView>(R.id.BTN_Burger)
         val sidePanel = findViewById<View>(R.id.side_panel)
-        val logoutButton = findViewById<Button>(R.id.btn_logout)
+        val logoutButton = findViewById<Button>(R.id.BTN_Logout)
+        val filing = findViewById<Button>(R.id.BTN_Filings)
+        val fastener = findViewById<Button>(R.id.BTN_Fasteners)
+        val cutting = findViewById<Button>(R.id.BTN_Cutting)
+        val writing = findViewById<Button>(R.id.BTN_Writing)
+        val paper = findViewById<Button>(R.id.BTN_Paper)
+        val tapes = findViewById<Button>(R.id.BTN_Tapes)
 
-        // Get panel width
+        filing.setOnClickListener {
+            val intent = Intent(this, FilingActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         sidePanel.post {
             panelWidth = sidePanel.width
         }

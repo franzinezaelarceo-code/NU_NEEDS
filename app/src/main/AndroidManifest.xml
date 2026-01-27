@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finals_Activity3Ramos">
         <activity
+            android:name=".FilingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewCartActivity"
             android:exported="false" />
         <activity
