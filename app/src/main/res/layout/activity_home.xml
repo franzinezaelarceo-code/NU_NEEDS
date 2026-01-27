@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/activity_home"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
-    android:background="@drawable/nu_needs_homebg">
+    tools:context=".HomeActivity">
 
-    <!-- ===== YOUR EXISTING HOME SCREEN ===== -->
+    <!-- ===== BLANK HOME SCREEN ===== -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/nu_needs_homebg">
 
         <!-- Burger Button -->
         <ImageView
@@ -29,6 +27,7 @@
             app:layout_constraintVertical_bias="0.039"
             app:srcCompat="@drawable/burger_button" />
 
+        <!-- Logo -->
         <ImageView
             android:id="@+id/logo"
             android:layout_width="100dp"
@@ -41,21 +40,9 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/nu_needs_logo" />
 
-        <TextView
-            android:id="@+id/TV_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/barlow"
-            android:text="Welcome to NU Needs!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- ===== SIDE PANEL (Hidden by default) ===== -->
+    <!-- ===== SIDE PANEL (Just Log Out button) ===== -->
     <LinearLayout
         android:id="@+id/side_panel"
         android:layout_width="250dp"
@@ -65,6 +52,25 @@
         android:padding="20dp"
         android:visibility="gone"
         android:translationX="-250dp">
+
+        <!-- Empty space at top -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- LOG OUT BUTTON -->
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOG OUT"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#6372d8"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="16dp" />
 
     </LinearLayout>
 
