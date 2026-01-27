@@ -35,7 +35,6 @@ class HomeActivity : AppCompatActivity() {
 
         val burgerButton = findViewById<ImageView>(R.id.burger_button)
         val sidePanel = findViewById<View>(R.id.side_panel)
-        val checkoutButton = findViewById<Button>(R.id.checkout_button)
 
         // Get panel width once it's measured
         sidePanel.post {
@@ -50,12 +49,6 @@ class HomeActivity : AppCompatActivity() {
         @SuppressLint("ClickableViewAccessibility")
         sidePanel.setOnTouchListener { view, event ->
             handlePanelDrag(view, event)
-        }
-
-        // Handle checkout button
-        checkoutButton.setOnClickListener {
-            val intent = Intent(this, ViewCartActivity::class.java)
-            startActivity(intent)
         }
 
         // Set up category click listeners
@@ -186,12 +179,6 @@ class HomeActivity : AppCompatActivity() {
         // FIX: Use the correct IDs from your XML
         val categoryIds = listOf(
             R.id.activity_home,  // Changed from R.id.activity_home
-            R.id.category_fasteners,
-            R.id.category_cutting,
-            R.id.category_writing,
-            R.id.category_ink,
-            R.id.category_paper,
-            R.id.category_tapes
         )
 
         categoryIds.forEach { id ->
