@@ -27,6 +27,7 @@
 
 
     <ImageView
+        android:id="@+id/BTN_Home"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:scaleType="centerCrop"
@@ -95,6 +96,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.925" />
+
+        <TextView
+            android:id="@+id/TV_CartTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/barlow"
+            android:text="₱0.00"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.868"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.907" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -222,7 +238,7 @@
                 app:srcCompat="@drawable/ic_minus" />
 
             <TextView
-                android:id="@+id/txt_quantity"
+                android:id="@+id/TV_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -232,6 +248,11 @@
                 android:layout_gravity="top|end"
                 android:layout_marginEnd="29dp"
                 android:layout_marginTop="50dp" />
+
+
+
+
+
 
 
         </FrameLayout>

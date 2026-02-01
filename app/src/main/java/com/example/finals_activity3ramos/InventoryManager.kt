@@ -4,7 +4,19 @@ object InventoryManager {
 
     private val products = mutableMapOf<String, Product>()
 
-    fun addProduct(product: Product) {
+    init {
+        addProduct(
+            Product(
+                id = "ARCH_FILE_A4",
+                name = "ARCH FILE FOLDER",
+                stock = 5,
+                initialStock = 5,
+                price = 85.0
+            )
+        )
+    }
+
+        fun addProduct(product: Product) {
         products[product.id] = product
     }
 
